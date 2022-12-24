@@ -1,0 +1,10 @@
+namespace flat;
+
+table GetSecretKeyRequest{
+    password:string;
+    service_name:string;
+}
+
+table GetSecretKeyResponse{
+    secret_key:string;
+}
