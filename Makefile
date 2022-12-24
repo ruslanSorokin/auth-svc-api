@@ -4,15 +4,15 @@
 
 proto_gen_go:
 	protoc --proto_path=layout/proto \
-	--go_out=generated/proto/go \
+	--go_out=generated/go/proto \
 	--go_opt=paths=source_relative \
-	--go-grpc_out=generated/proto/go \
+	--go-grpc_out=generated/go/proto \
 	--go-grpc_opt=paths=source_relative \
 	layout/proto/*.proto
 
 flat_gen_go:
 	flatc --go --grpc \
-	-o generated/flat/go \
+	-o generated/go \
 	-I layout/flat \
 	layout/flat/*.fbs
 	
