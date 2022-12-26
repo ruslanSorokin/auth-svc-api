@@ -1,13 +1,13 @@
 namespace flat;
 
 table AuthenticateUserRequest{
-    username:string;
-    password:string;
+    username: string;
+    password: string;
 }
 
 table AuthenticateUserResponse{
-    access_token:string;
-    refresh_token:string;
+    access_token: string;
+    refresh_token: string;
 }
 
 
@@ -16,6 +16,6 @@ table RefreshUserTokenRequest{
 }
 
 table RefreshUserTokenResponse{
-    access_token:string;
-    refresh_token:string;
+    access_token: string;
+    refresh_token: string;
 }
