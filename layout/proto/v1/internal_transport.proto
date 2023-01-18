@@ -1,5 +1,5 @@
 syntax = "proto3";
-package proto.internal;
+package proto.v1;
 
 
 option go_package = "github.com/ruslanSorokin/auth-service-api/generated/proto/go/proto";
