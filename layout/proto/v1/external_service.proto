@@ -1,5 +1,5 @@
 syntax = "proto3";
-package proto.external;
+package proto.v1;
 
 
 option go_package = "github.com/ruslanSorokin/auth-service-api/generated/proto/go/proto";
@@ -8,7 +8,7 @@ option go_package = "github.com/ruslanSorokin/auth-service-api/generated/proto/g
 import "external_transport.proto";
 
 
-service AuthenticationServiceExternal{
+service AuthenticationExternalService{
     rpc AuthenticateUser(AuthenticateUserRequest) returns (AuthenticateUserResponse);
-    rpc RefreshUser(RefreshUserTokenRequest) returns (RefreshUserTokenResponse);
+    rpc RefreshUser(RefreshUserRequest) returns (RefreshUserResponse);
 }
