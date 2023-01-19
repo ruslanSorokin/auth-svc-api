@@ -1,12 +1,11 @@
 syntax = "proto3";
-package proto.v1;
+package v1.proto;
 
 
-option go_package = "github.com/ruslanSorokin/auth-service-api/generated/proto/go/proto";
+option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
 
 
 import "internal_transport.proto";
-
 
 service AuthenticationInternalService{
     rpc GetSecretKey(GetSecretKeyRequest) returns (GetSecretKeyResponse);

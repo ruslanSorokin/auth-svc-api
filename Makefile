@@ -48,17 +48,19 @@ install_deps:
 	go install $(deps)
 
 proto_gen_go: check_deps
-	protoc \
-	--proto_path=layout/proto/$(api_version) \
+	protoc --proto_path=layout/$(api_version)/proto \
 	--proto_path=deps/googleapis:deps/grpc-gateway \
-	--go_out=generated/go/proto \
+	\
+	--go_out=generated/$(api_version)/go/proto \
+	--go-grpc_out=generated/$(api_version)/go/proto \
+	--grpc-gateway_out=generated/$(api_version)/go/proto \
+	--openapiv2_out=generated/$(api_version)/go/openapiv2 \
+	\
 	--go_opt=paths=source_relative \
-	--go-grpc_out=generated/go/proto \
 	--go-grpc_opt=paths=source_relative \
-	--grpc-gateway_out=generated/go/proto \
 	--grpc-gateway_opt=paths=source_relative \
-	--openapiv2_out=generated/go/openapiv2 \
-	layout/proto/$(api_version)/*.proto
+	\
+	layout/$(api_version)/proto/*.proto
 
 flat_gen_go:
 	flatc --go --grpc \

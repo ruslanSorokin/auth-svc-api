@@ -1,0 +1,15 @@
+syntax = "proto3";
+package v1.proto;
+
+
+option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
+
+
+message GetSecretKeyRequest{
+    string service_name = 1;
+    string password = 2;
+}
+
+message GetSecretKeyResponse{
+    string secret_key = 1;
+}
