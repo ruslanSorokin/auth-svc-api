@@ -1,8 +1,8 @@
 syntax = "proto3";
-package proto.v1;
+package v1.proto;
 
 
-option go_package = "github.com/ruslanSorokin/auth-service-api/generated/proto/go/proto";
+option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
 
 
 message AuthenticateUserRequest{
@@ -16,11 +16,11 @@ message AuthenticateUserResponse{
 }
 
 
-message RefreshUserRequest{
+message RefreshUserAuthenticationRequest{
     string refresh_token = 1;
 }
 
-message RefreshUserResponse{
+message RefreshUserAuthenticationResponse{
     string access_token = 2;
     string refresh_token = 3;
 }
