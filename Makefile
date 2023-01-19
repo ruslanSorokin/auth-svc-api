@@ -50,7 +50,7 @@ install_deps:
 proto_gen_go: check_deps
 	protoc \
 	--proto_path=layout/proto/$(api_version) \
-	--proto_path=googleapis \
+	--proto_path=deps/googleapis \
 	--go_out=generated/go/proto \
 	--go_opt=paths=source_relative \
 	--go-grpc_out=generated/go/proto \
