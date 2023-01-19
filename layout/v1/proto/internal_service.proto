@@ -7,6 +7,26 @@ option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/p
 
 import "internal_transport.proto";
 
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+	info :{
+		version: "1.0";
+	}
+	schemes: HTTPS;
+};
+
 service AuthenticationInternalService{
-    rpc GetSecretKey(GetSecretKeyRequest) returns (GetSecretKeyResponse);
+    rpc GetSecretKey(GetSecretKeyRequest) returns (GetSecretKeyResponse){
+		option (google.api.http) = {
+			post: "/v1/get-secret-key"
+			body: "*"
+		};
+		option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+			summary: "Get secret key"
+			description: "Get secret key via password"
+			tags: "Internal_API"
+		};
+	}
 }
