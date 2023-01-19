@@ -54,7 +54,7 @@ proto_gen_go: check_deps
 	--go_out=generated/$(api_version)/go/proto \
 	--go-grpc_out=generated/$(api_version)/go/proto \
 	--grpc-gateway_out=generated/$(api_version)/go/proto \
-	--openapiv2_out=generated/$(api_version)/go/openapiv2 \
+	--openapiv2_out=docs/swagger \
 	\
 	--go_opt=paths=source_relative \
 	--go-grpc_opt=paths=source_relative \
