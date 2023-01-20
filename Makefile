@@ -4,13 +4,14 @@
 
 api_version := v1
 
+has_brew := $(shell which brew)
 has_protoc := $(shell which protoc)
 has_protoc_gen_go := $(shell which protoc-gen-go)
 has_protoc_gen_go_grpc := $(shell which protoc-gen-go-grpc)
 has_protoc_gen_grpc_gateway := $(shell which protoc-gen-grpc-gateway)
 has_protoc_gen_openapiv2  := $(shell which protoc-gen-openapiv2)
 
-message := "Install protoc & all deps with 'make install_deps'"
+message := "Install protobuf & all deps with 'make install_deps'"
 
 check_deps:
 ifeq  (, has_protoc)
@@ -41,13 +42,22 @@ deps := github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
 
 
 install_deps:
+# probably not MacOS
+ifeq (, has_brew)
+	$(info "You don't have brew installed. Please, enter sudo password for installing protobuf via apt")
+	sudo apt install protobuf-compiler
+endif
+# probably MacOS
+ifneq (, has_brew)
+	$(info "You have brew installed. Wait until all deps will be installed")
 	brew install protobuf
+endif
 
 	go get $(deps)
 
 	go install $(deps)
 
-proto_gen_go: check_deps
+proto.gen_go: check_deps
 	protoc --proto_path=layout/$(api_version)/proto \
 	--proto_path=deps/googleapis:deps/grpc-gateway \
 	\
@@ -62,7 +72,7 @@ proto_gen_go: check_deps
 	\
 	layout/$(api_version)/proto/*.proto
 
-flat_gen_go:
+flat.gen_go:
 	flatc --go --grpc \
 	-o generated/go \
 	-I layout/flat \
