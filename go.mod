@@ -3,7 +3,6 @@ module github.com/ruslanSorokin/auth-service-api
 go 1.19
 
 require (
-	github.com/google/flatbuffers v22.11.23+incompatible
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.0
 	google.golang.org/api v0.108.0
 	google.golang.org/genproto v0.0.0-20221227171554-f9683d7f8bef
