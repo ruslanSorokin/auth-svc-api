@@ -1,8 +1,0 @@
-include "internal_transport.fbs";
-
-namespace flat;
-
-
-rpc_service AuthenticationServiceInternal{
-    GetSecretKey(GetSecretKeyRequest): GetSecretKeyResponse;
-}

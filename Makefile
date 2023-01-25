@@ -1,6 +1,5 @@
-.PHONY: proto_gen_go flat_gen_go
-
-.SILENT: proto_gen_go flat_gen_go
+.PHONY: proto.gen_go deps.check deps.install
+.SILENT: proto.gen_go deps.check deps.install
 
 api_version := v1
 
@@ -13,7 +12,7 @@ has_protoc_gen_openapiv2  := $(shell which protoc-gen-openapiv2)
 
 message := "Install protobuf & all deps with 'make install_deps'"
 
-check_deps:
+deps.check:
 ifeq  (, has_protoc)
 	$(error $(message))
 endif
@@ -35,7 +34,7 @@ ifeq  (, has_protoc_gen_openapiv2)
 endif
 
 
-deps := github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+dependencies := github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
     github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
     google.golang.org/protobuf/cmd/protoc-gen-go \
     google.golang.org/grpc/cmd/protoc-gen-go-grpc
@@ -53,11 +52,11 @@ ifneq (, has_brew)
 	brew install protobuf
 endif
 
-	go get $(deps)
+	go get $(dependencies)
 
-	go install $(deps)
+	go install $(dependencies)
 
-proto.gen_go: check_deps
+proto.gen_go: deps.check
 	protoc --proto_path=layout/$(api_version)/proto \
 	--proto_path=deps/googleapis:deps/grpc-gateway \
 	\
@@ -69,12 +68,4 @@ proto.gen_go: check_deps
 	--go_opt=paths=source_relative \
 	--go-grpc_opt=paths=source_relative \
 	--grpc-gateway_opt=paths=source_relative \
-	\
 	layout/$(api_version)/proto/*.proto
-
-flat.gen_go:
-	flatc --go --grpc \
-	-o generated/go \
-	-I layout/flat \
-	layout/flat/*.fbs
-	

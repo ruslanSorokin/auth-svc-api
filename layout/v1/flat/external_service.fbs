@@ -1,9 +1,0 @@
-include "external_transport.fbs";
-
-namespace flat;
-
-
-rpc_service AuthenticationServiceExternal{
-    AuthenticateUser(AuthenticateUserRequest): AuthenticateUserResponse;
-	RefreshUser(RefreshUserTokenRequest): RefreshUserTokenResponse;
-}
