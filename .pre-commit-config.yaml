@@ -16,4 +16,4 @@ repos:
     rev: master
     hooks:
       - id: protolint
-        args: [-fix -config_path=.protolint.yaml layout]
+        args: [-fix, -config_path=.protolint.yaml]
