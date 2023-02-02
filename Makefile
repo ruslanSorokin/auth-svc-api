@@ -11,8 +11,13 @@ _download-tools:
 install-tools: _download-tools
 	@cat tools/tools.go | grep _ | awk -F'"' '{print $$2}' | xargs -tI % go install %
 
+.SILENT: proto.lint
+.PHONY: proto.lint
+proto.lint:
+	@protolint -fix -config_path=.protolint.yaml $(proto_source_path)
 
-proto.gen_go: check
+.SILENT: proto.gen.go
+proto.gen.go: proto.lint
 	protoc --proto_path=$(proto_source_path) \
 	--proto_path=$(deps_path) \
 	\
