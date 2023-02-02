@@ -12,3 +12,8 @@ repos:
     hooks:
       - id: typos
         args: []
+  - repo: https://github.com/yoheimuta/protolint
+    rev: master
+    hooks:
+      - id: protolint
+        args: [-fix -config_path=.protolint.yaml layout]
