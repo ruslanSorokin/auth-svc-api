@@ -5,22 +5,41 @@ package v1.proto;
 option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
 
 
-message AuthenticateUserRequest{
-    string username = 1;
-    string password = 2;
+message LoginRequest{
+  oneof user_identity {
+    string login = 1;
+    string email = 2;
+  }
+  string password = 3;
 }
 
-message AuthenticateUserResponse{
-    string access_token = 2;
-    string refresh_token = 3;
+message LoginResponse{
+  string access_token = 1;
+  string refresh_token = 2;
 }
 
 
-message RefreshUserAuthenticationRequest{
-    string refresh_token = 1;
+message RefreshTokenPairRequest{
+  string refresh_token = 1;
 }
 
-message RefreshUserAuthenticationResponse{
-    string access_token = 2;
-    string refresh_token = 3;
+message RefreshTokenPairResponse{
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message LogoutRequest{
+  string refresh_token = 1;
+}
+
+message LogoutResponse{
+
+}
+
+message LogoutAllRequest{
+  string refresh_token = 1;
+}
+
+message LogoutAllResponse{
+
 }

@@ -22,8 +22,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthenticationExternalServiceClient interface {
-	AuthenticateUser(ctx context.Context, in *AuthenticateUserRequest, opts ...grpc.CallOption) (*AuthenticateUserResponse, error)
-	RefreshUserAuthentication(ctx context.Context, in *RefreshUserAuthenticationRequest, opts ...grpc.CallOption) (*RefreshUserAuthenticationResponse, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	RefreshTokenPair(ctx context.Context, in *RefreshTokenPairRequest, opts ...grpc.CallOption) (*RefreshTokenPairResponse, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
+	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error)
 }
 
 type authenticationExternalServiceClient struct {
@@ -34,18 +36,36 @@ func NewAuthenticationExternalServiceClient(cc grpc.ClientConnInterface) Authent
 	return &authenticationExternalServiceClient{cc}
 }
 
-func (c *authenticationExternalServiceClient) AuthenticateUser(ctx context.Context, in *AuthenticateUserRequest, opts ...grpc.CallOption) (*AuthenticateUserResponse, error) {
-	out := new(AuthenticateUserResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/AuthenticateUser", in, out, opts...)
+func (c *authenticationExternalServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authenticationExternalServiceClient) RefreshUserAuthentication(ctx context.Context, in *RefreshUserAuthenticationRequest, opts ...grpc.CallOption) (*RefreshUserAuthenticationResponse, error) {
-	out := new(RefreshUserAuthenticationResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/RefreshUserAuthentication", in, out, opts...)
+func (c *authenticationExternalServiceClient) RefreshTokenPair(ctx context.Context, in *RefreshTokenPairRequest, opts ...grpc.CallOption) (*RefreshTokenPairResponse, error) {
+	out := new(RefreshTokenPairResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/RefreshTokenPair", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticationExternalServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+	out := new(LogoutResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/Logout", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticationExternalServiceClient) LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error) {
+	out := new(LogoutAllResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/LogoutAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,8 +76,10 @@ func (c *authenticationExternalServiceClient) RefreshUserAuthentication(ctx cont
 // All implementations must embed UnimplementedAuthenticationExternalServiceServer
 // for forward compatibility
 type AuthenticationExternalServiceServer interface {
-	AuthenticateUser(context.Context, *AuthenticateUserRequest) (*AuthenticateUserResponse, error)
-	RefreshUserAuthentication(context.Context, *RefreshUserAuthenticationRequest) (*RefreshUserAuthenticationResponse, error)
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	RefreshTokenPair(context.Context, *RefreshTokenPairRequest) (*RefreshTokenPairResponse, error)
+	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
+	LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error)
 	mustEmbedUnimplementedAuthenticationExternalServiceServer()
 }
 
@@ -65,11 +87,17 @@ type AuthenticationExternalServiceServer interface {
 type UnimplementedAuthenticationExternalServiceServer struct {
 }
 
-func (UnimplementedAuthenticationExternalServiceServer) AuthenticateUser(context.Context, *AuthenticateUserRequest) (*AuthenticateUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AuthenticateUser not implemented")
+func (UnimplementedAuthenticationExternalServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthenticationExternalServiceServer) RefreshUserAuthentication(context.Context, *RefreshUserAuthenticationRequest) (*RefreshUserAuthenticationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RefreshUserAuthentication not implemented")
+func (UnimplementedAuthenticationExternalServiceServer) RefreshTokenPair(context.Context, *RefreshTokenPairRequest) (*RefreshTokenPairResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RefreshTokenPair not implemented")
+}
+func (UnimplementedAuthenticationExternalServiceServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
+}
+func (UnimplementedAuthenticationExternalServiceServer) LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LogoutAll not implemented")
 }
 func (UnimplementedAuthenticationExternalServiceServer) mustEmbedUnimplementedAuthenticationExternalServiceServer() {
 }
@@ -85,38 +113,74 @@ func RegisterAuthenticationExternalServiceServer(s grpc.ServiceRegistrar, srv Au
 	s.RegisterService(&AuthenticationExternalService_ServiceDesc, srv)
 }
 
-func _AuthenticationExternalService_AuthenticateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AuthenticateUserRequest)
+func _AuthenticationExternalService_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthenticationExternalServiceServer).AuthenticateUser(ctx, in)
+		return srv.(AuthenticationExternalServiceServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationExternalService/AuthenticateUser",
+		FullMethod: "/v1.proto.AuthenticationExternalService/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationExternalServiceServer).AuthenticateUser(ctx, req.(*AuthenticateUserRequest))
+		return srv.(AuthenticationExternalServiceServer).Login(ctx, req.(*LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthenticationExternalService_RefreshUserAuthentication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RefreshUserAuthenticationRequest)
+func _AuthenticationExternalService_RefreshTokenPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefreshTokenPairRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthenticationExternalServiceServer).RefreshUserAuthentication(ctx, in)
+		return srv.(AuthenticationExternalServiceServer).RefreshTokenPair(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationExternalService/RefreshUserAuthentication",
+		FullMethod: "/v1.proto.AuthenticationExternalService/RefreshTokenPair",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationExternalServiceServer).RefreshUserAuthentication(ctx, req.(*RefreshUserAuthenticationRequest))
+		return srv.(AuthenticationExternalServiceServer).RefreshTokenPair(ctx, req.(*RefreshTokenPairRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthenticationExternalService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationExternalServiceServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/v1.proto.AuthenticationExternalService/Logout",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationExternalServiceServer).Logout(ctx, req.(*LogoutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthenticationExternalService_LogoutAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutAllRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationExternalServiceServer).LogoutAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/v1.proto.AuthenticationExternalService/LogoutAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationExternalServiceServer).LogoutAll(ctx, req.(*LogoutAllRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -129,12 +193,20 @@ var AuthenticationExternalService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AuthenticationExternalServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AuthenticateUser",
-			Handler:    _AuthenticationExternalService_AuthenticateUser_Handler,
+			MethodName: "Login",
+			Handler:    _AuthenticationExternalService_Login_Handler,
 		},
 		{
-			MethodName: "RefreshUserAuthentication",
-			Handler:    _AuthenticationExternalService_RefreshUserAuthentication_Handler,
+			MethodName: "RefreshTokenPair",
+			Handler:    _AuthenticationExternalService_RefreshTokenPair_Handler,
+		},
+		{
+			MethodName: "Logout",
+			Handler:    _AuthenticationExternalService_Logout_Handler,
+		},
+		{
+			MethodName: "LogoutAll",
+			Handler:    _AuthenticationExternalService_LogoutAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

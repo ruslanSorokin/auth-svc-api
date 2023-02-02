@@ -19,16 +19,16 @@
     "application/json"
   ],
   "paths": {
-    "/v1/get-secret-key": {
+    "/api/v1/force-logout": {
       "post": {
-        "summary": "Get secret key",
-        "description": "Get secret key via password",
-        "operationId": "AuthenticationInternalService_GetSecretKey",
+        "summary": "Force logout for specific user",
+        "description": "Force logout specific user via one of the identities. It takes time equals to access token lifetime",
+        "operationId": "AuthenticationInternalService_ForceLogout",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/protoGetSecretKeyResponse"
+              "$ref": "#/definitions/protoForceLogoutResponse"
             }
           },
           "default": {
@@ -44,7 +44,75 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/protoGetSecretKeyRequest"
+              "$ref": "#/definitions/protoForceLogoutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Internal_API"
+        ]
+      }
+    },
+    "/api/v1/force-logout-all": {
+      "post": {
+        "summary": "Force logout for all active",
+        "description": "Force logout specific user. It takes time equals to access token lifetime",
+        "operationId": "AuthenticationInternalService_ForceLogoutAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoForceLogoutAllResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoForceLogoutAllRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Internal_API"
+        ]
+      }
+    },
+    "/api/v1/get-secrets": {
+      "post": {
+        "summary": "Get secret keys",
+        "description": "Get secret keys via password",
+        "operationId": "AuthenticationInternalService_GetSecrets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoGetSecretsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoGetSecretsRequest"
             }
           }
         ],
@@ -55,10 +123,13 @@
     }
   },
   "definitions": {
-    "protoGetSecretKeyRequest": {
+    "protoForceLogoutAllRequest": {
       "type": "object",
       "properties": {
         "serviceName": {
+          "type": "string"
+        },
+        "serviceGuid": {
           "type": "string"
         },
         "password": {
@@ -66,11 +137,66 @@
         }
       }
     },
-    "protoGetSecretKeyResponse": {
+    "protoForceLogoutAllResponse": {
       "type": "object",
       "properties": {
-        "secretKey": {
+        "sessionsTerminated": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "protoForceLogoutRequest": {
+      "type": "object",
+      "properties": {
+        "serviceName": {
           "type": "string"
+        },
+        "serviceGuid": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        }
+      }
+    },
+    "protoForceLogoutResponse": {
+      "type": "object"
+    },
+    "protoGetSecretsRequest": {
+      "type": "object",
+      "properties": {
+        "serviceName": {
+          "type": "string"
+        },
+        "serviceGuid": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "protoGetSecretsResponse": {
+      "type": "object",
+      "properties": {
+        "secretKeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

@@ -20,17 +20,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetSecretKeyRequest struct {
+type GetSecretsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
-	Password    string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	ServiceGuid string `protobuf:"bytes,2,opt,name=service_guid,json=serviceGuid,proto3" json:"service_guid,omitempty"`
+	Password    string `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
 }
 
-func (x *GetSecretKeyRequest) Reset() {
-	*x = GetSecretKeyRequest{}
+func (x *GetSecretsRequest) Reset() {
+	*x = GetSecretsRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_internal_transport_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -38,13 +39,13 @@ func (x *GetSecretKeyRequest) Reset() {
 	}
 }
 
-func (x *GetSecretKeyRequest) String() string {
+func (x *GetSecretsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetSecretKeyRequest) ProtoMessage() {}
+func (*GetSecretsRequest) ProtoMessage() {}
 
-func (x *GetSecretKeyRequest) ProtoReflect() protoreflect.Message {
+func (x *GetSecretsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_transport_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,35 +57,42 @@ func (x *GetSecretKeyRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetSecretKeyRequest.ProtoReflect.Descriptor instead.
-func (*GetSecretKeyRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetSecretsRequest.ProtoReflect.Descriptor instead.
+func (*GetSecretsRequest) Descriptor() ([]byte, []int) {
 	return file_internal_transport_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetSecretKeyRequest) GetServiceName() string {
+func (x *GetSecretsRequest) GetServiceName() string {
 	if x != nil {
 		return x.ServiceName
 	}
 	return ""
 }
 
-func (x *GetSecretKeyRequest) GetPassword() string {
+func (x *GetSecretsRequest) GetServiceGuid() string {
+	if x != nil {
+		return x.ServiceGuid
+	}
+	return ""
+}
+
+func (x *GetSecretsRequest) GetPassword() string {
 	if x != nil {
 		return x.Password
 	}
 	return ""
 }
 
-type GetSecretKeyResponse struct {
+type GetSecretsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	SecretKey string `protobuf:"bytes,1,opt,name=secret_key,json=secretKey,proto3" json:"secret_key,omitempty"`
+	SecretKeys []string `protobuf:"bytes,1,rep,name=secret_keys,json=secretKeys,proto3" json:"secret_keys,omitempty"`
 }
 
-func (x *GetSecretKeyResponse) Reset() {
-	*x = GetSecretKeyResponse{}
+func (x *GetSecretsResponse) Reset() {
+	*x = GetSecretsResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_internal_transport_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -92,13 +100,13 @@ func (x *GetSecretKeyResponse) Reset() {
 	}
 }
 
-func (x *GetSecretKeyResponse) String() string {
+func (x *GetSecretsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetSecretKeyResponse) ProtoMessage() {}
+func (*GetSecretsResponse) ProtoMessage() {}
 
-func (x *GetSecretKeyResponse) ProtoReflect() protoreflect.Message {
+func (x *GetSecretsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_transport_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -110,16 +118,297 @@ func (x *GetSecretKeyResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetSecretKeyResponse.ProtoReflect.Descriptor instead.
-func (*GetSecretKeyResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetSecretsResponse.ProtoReflect.Descriptor instead.
+func (*GetSecretsResponse) Descriptor() ([]byte, []int) {
 	return file_internal_transport_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetSecretKeyResponse) GetSecretKey() string {
+func (x *GetSecretsResponse) GetSecretKeys() []string {
 	if x != nil {
-		return x.SecretKey
+		return x.SecretKeys
+	}
+	return nil
+}
+
+type ForceLogoutAllRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
+	ServiceGuid string `protobuf:"bytes,2,opt,name=service_guid,json=serviceGuid,proto3" json:"service_guid,omitempty"`
+	Password    string `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+}
+
+func (x *ForceLogoutAllRequest) Reset() {
+	*x = ForceLogoutAllRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_transport_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ForceLogoutAllRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceLogoutAllRequest) ProtoMessage() {}
+
+func (x *ForceLogoutAllRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_transport_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceLogoutAllRequest.ProtoReflect.Descriptor instead.
+func (*ForceLogoutAllRequest) Descriptor() ([]byte, []int) {
+	return file_internal_transport_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ForceLogoutAllRequest) GetServiceName() string {
+	if x != nil {
+		return x.ServiceName
 	}
 	return ""
+}
+
+func (x *ForceLogoutAllRequest) GetServiceGuid() string {
+	if x != nil {
+		return x.ServiceGuid
+	}
+	return ""
+}
+
+func (x *ForceLogoutAllRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type ForceLogoutAllResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SessionsTerminated int64 `protobuf:"varint,1,opt,name=sessions_terminated,json=sessionsTerminated,proto3" json:"sessions_terminated,omitempty"`
+}
+
+func (x *ForceLogoutAllResponse) Reset() {
+	*x = ForceLogoutAllResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_transport_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ForceLogoutAllResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceLogoutAllResponse) ProtoMessage() {}
+
+func (x *ForceLogoutAllResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_transport_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceLogoutAllResponse.ProtoReflect.Descriptor instead.
+func (*ForceLogoutAllResponse) Descriptor() ([]byte, []int) {
+	return file_internal_transport_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ForceLogoutAllResponse) GetSessionsTerminated() int64 {
+	if x != nil {
+		return x.SessionsTerminated
+	}
+	return 0
+}
+
+type ForceLogoutRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
+	ServiceGuid string `protobuf:"bytes,2,opt,name=service_guid,json=serviceGuid,proto3" json:"service_guid,omitempty"`
+	Password    string `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	// Types that are assignable to UserIdentity:
+	//
+	//	*ForceLogoutRequest_RefreshToken
+	//	*ForceLogoutRequest_Guid
+	//	*ForceLogoutRequest_Email
+	//	*ForceLogoutRequest_Login
+	UserIdentity isForceLogoutRequest_UserIdentity `protobuf_oneof:"user_identity"`
+}
+
+func (x *ForceLogoutRequest) Reset() {
+	*x = ForceLogoutRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_transport_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ForceLogoutRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceLogoutRequest) ProtoMessage() {}
+
+func (x *ForceLogoutRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_transport_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceLogoutRequest.ProtoReflect.Descriptor instead.
+func (*ForceLogoutRequest) Descriptor() ([]byte, []int) {
+	return file_internal_transport_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ForceLogoutRequest) GetServiceName() string {
+	if x != nil {
+		return x.ServiceName
+	}
+	return ""
+}
+
+func (x *ForceLogoutRequest) GetServiceGuid() string {
+	if x != nil {
+		return x.ServiceGuid
+	}
+	return ""
+}
+
+func (x *ForceLogoutRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (m *ForceLogoutRequest) GetUserIdentity() isForceLogoutRequest_UserIdentity {
+	if m != nil {
+		return m.UserIdentity
+	}
+	return nil
+}
+
+func (x *ForceLogoutRequest) GetRefreshToken() string {
+	if x, ok := x.GetUserIdentity().(*ForceLogoutRequest_RefreshToken); ok {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *ForceLogoutRequest) GetGuid() string {
+	if x, ok := x.GetUserIdentity().(*ForceLogoutRequest_Guid); ok {
+		return x.Guid
+	}
+	return ""
+}
+
+func (x *ForceLogoutRequest) GetEmail() string {
+	if x, ok := x.GetUserIdentity().(*ForceLogoutRequest_Email); ok {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *ForceLogoutRequest) GetLogin() string {
+	if x, ok := x.GetUserIdentity().(*ForceLogoutRequest_Login); ok {
+		return x.Login
+	}
+	return ""
+}
+
+type isForceLogoutRequest_UserIdentity interface {
+	isForceLogoutRequest_UserIdentity()
+}
+
+type ForceLogoutRequest_RefreshToken struct {
+	RefreshToken string `protobuf:"bytes,4,opt,name=refresh_token,json=refreshToken,proto3,oneof"`
+}
+
+type ForceLogoutRequest_Guid struct {
+	Guid string `protobuf:"bytes,5,opt,name=guid,proto3,oneof"`
+}
+
+type ForceLogoutRequest_Email struct {
+	Email string `protobuf:"bytes,6,opt,name=email,proto3,oneof"`
+}
+
+type ForceLogoutRequest_Login struct {
+	Login string `protobuf:"bytes,7,opt,name=login,proto3,oneof"`
+}
+
+func (*ForceLogoutRequest_RefreshToken) isForceLogoutRequest_UserIdentity() {}
+
+func (*ForceLogoutRequest_Guid) isForceLogoutRequest_UserIdentity() {}
+
+func (*ForceLogoutRequest_Email) isForceLogoutRequest_UserIdentity() {}
+
+func (*ForceLogoutRequest_Login) isForceLogoutRequest_UserIdentity() {}
+
+type ForceLogoutResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ForceLogoutResponse) Reset() {
+	*x = ForceLogoutResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_transport_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ForceLogoutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForceLogoutResponse) ProtoMessage() {}
+
+func (x *ForceLogoutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_transport_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForceLogoutResponse.ProtoReflect.Descriptor instead.
+func (*ForceLogoutResponse) Descriptor() ([]byte, []int) {
+	return file_internal_transport_proto_rawDescGZIP(), []int{5}
 }
 
 var File_internal_transport_proto protoreflect.FileDescriptor
@@ -127,20 +416,52 @@ var File_internal_transport_proto protoreflect.FileDescriptor
 var file_internal_transport_proto_rawDesc = []byte{
 	0x0a, 0x18, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5f, 0x74, 0x72, 0x61, 0x6e, 0x73,
 	0x70, 0x6f, 0x72, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x76, 0x31, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x22, 0x54, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x53, 0x65, 0x63, 0x72, 0x65,
-	0x74, 0x4b, 0x65, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x73,
+	0x72, 0x6f, 0x74, 0x6f, 0x22, 0x75, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x53, 0x65, 0x63, 0x72, 0x65,
+	0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c,
+	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x67, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x75, 0x69, 0x64, 0x12,
+	0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22, 0x35, 0x0a, 0x12, 0x47,
+	0x65, 0x74, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x5f, 0x6b, 0x65, 0x79, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x4b, 0x65,
+	0x79, 0x73, 0x22, 0x79, 0x0a, 0x15, 0x46, 0x6f, 0x72, 0x63, 0x65, 0x4c, 0x6f, 0x67, 0x6f, 0x75,
+	0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x73,
 	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1a,
-	0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22, 0x35, 0x0a, 0x14, 0x47, 0x65,
-	0x74, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x4b, 0x65, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x5f, 0x6b, 0x65, 0x79,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x4b, 0x65,
-	0x79, 0x42, 0x41, 0x5a, 0x3f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
-	0x72, 0x75, 0x73, 0x6c, 0x61, 0x6e, 0x53, 0x6f, 0x72, 0x6f, 0x6b, 0x69, 0x6e, 0x2f, 0x61, 0x75,
-	0x74, 0x68, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x67,
-	0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x2f, 0x76, 0x31, 0x2f, 0x67, 0x6f, 0x2f, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21,
+	0x0a, 0x0c, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x67, 0x75, 0x69, 0x64, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x47, 0x75, 0x69,
+	0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22, 0x49, 0x0a,
+	0x16, 0x46, 0x6f, 0x72, 0x63, 0x65, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x41, 0x6c, 0x6c, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2f, 0x0a, 0x13, 0x73, 0x65, 0x73, 0x73, 0x69,
+	0x6f, 0x6e, 0x73, 0x5f, 0x74, 0x65, 0x72, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x12, 0x73, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x54, 0x65,
+	0x72, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65, 0x64, 0x22, 0xf4, 0x01, 0x0a, 0x12, 0x46, 0x6f, 0x72,
+	0x63, 0x65, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x21, 0x0a, 0x0c, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x4e, 0x61,
+	0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x67, 0x75,
+	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x47, 0x75, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72,
+	0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72,
+	0x64, 0x12, 0x25, 0x0a, 0x0d, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x74, 0x6f, 0x6b,
+	0x65, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x0c, 0x72, 0x65, 0x66, 0x72,
+	0x65, 0x73, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x14, 0x0a, 0x04, 0x67, 0x75, 0x69, 0x64,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x04, 0x67, 0x75, 0x69, 0x64, 0x12, 0x16,
+	0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52,
+	0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x16, 0x0a, 0x05, 0x6c, 0x6f, 0x67, 0x69, 0x6e, 0x18,
+	0x07, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x05, 0x6c, 0x6f, 0x67, 0x69, 0x6e, 0x42, 0x0f,
+	0x0a, 0x0d, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x22,
+	0x15, 0x0a, 0x13, 0x46, 0x6f, 0x72, 0x63, 0x65, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x41, 0x5a, 0x3f, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x72, 0x75, 0x73, 0x6c, 0x61, 0x6e, 0x53, 0x6f, 0x72, 0x6f, 0x6b,
+	0x69, 0x6e, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2d,
+	0x61, 0x70, 0x69, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x2f, 0x76, 0x31,
+	0x2f, 0x67, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -155,10 +476,14 @@ func file_internal_transport_proto_rawDescGZIP() []byte {
 	return file_internal_transport_proto_rawDescData
 }
 
-var file_internal_transport_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_internal_transport_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_internal_transport_proto_goTypes = []interface{}{
-	(*GetSecretKeyRequest)(nil),  // 0: v1.proto.GetSecretKeyRequest
-	(*GetSecretKeyResponse)(nil), // 1: v1.proto.GetSecretKeyResponse
+	(*GetSecretsRequest)(nil),      // 0: v1.proto.GetSecretsRequest
+	(*GetSecretsResponse)(nil),     // 1: v1.proto.GetSecretsResponse
+	(*ForceLogoutAllRequest)(nil),  // 2: v1.proto.ForceLogoutAllRequest
+	(*ForceLogoutAllResponse)(nil), // 3: v1.proto.ForceLogoutAllResponse
+	(*ForceLogoutRequest)(nil),     // 4: v1.proto.ForceLogoutRequest
+	(*ForceLogoutResponse)(nil),    // 5: v1.proto.ForceLogoutResponse
 }
 var file_internal_transport_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -175,7 +500,7 @@ func file_internal_transport_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_internal_transport_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetSecretKeyRequest); i {
+			switch v := v.(*GetSecretsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -187,7 +512,55 @@ func file_internal_transport_proto_init() {
 			}
 		}
 		file_internal_transport_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetSecretKeyResponse); i {
+			switch v := v.(*GetSecretsResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_internal_transport_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ForceLogoutAllRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_internal_transport_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ForceLogoutAllResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_internal_transport_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ForceLogoutRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_internal_transport_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ForceLogoutResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -199,13 +572,19 @@ func file_internal_transport_proto_init() {
 			}
 		}
 	}
+	file_internal_transport_proto_msgTypes[4].OneofWrappers = []interface{}{
+		(*ForceLogoutRequest_RefreshToken)(nil),
+		(*ForceLogoutRequest_Guid)(nil),
+		(*ForceLogoutRequest_Email)(nil),
+		(*ForceLogoutRequest_Login)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_internal_transport_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

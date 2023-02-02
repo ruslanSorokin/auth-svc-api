@@ -1,14 +1,13 @@
 syntax = "proto3";
+
 package v1.proto;
-
-
-option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
-
 
 import "external_transport.proto";
 
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	info :{
@@ -18,26 +17,48 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 };
 
 service AuthenticationExternalService{
-    rpc AuthenticateUser(AuthenticateUserRequest) returns (AuthenticateUserResponse){
-		option (google.api.http) = {
-			post: "/v1/authenticate-user"
+  rpc Login(LoginRequest) returns (LoginResponse){
+    option (google.api.http) = {
+			post: "/api/v1/login"
 			body: "*"
 		};
-		option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Authenticate a user"
-			description: "Authenticate a user via username & password and receive a new pair of refresh & access tokens"
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+			summary: "Authenticate a user via credentials"
+			description: "Authenticate a user via credentials and receive a new pair of refresh & access tokens"
 			tags: "Users"
 		};
-	}	
-    rpc RefreshUserAuthentication(RefreshUserAuthenticationRequest) returns (RefreshUserAuthenticationResponse){
-		option (google.api.http) = {
-			patch: "/v1/refresh-user"
+  }
+  rpc RefreshTokenPair(RefreshTokenPairRequest) returns (RefreshTokenPairResponse){
+    option (google.api.http) = {
+			post: "/api/v1/refresh-token-pair"
 			body: "*"
 		};
-		option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Refresh user's authentication"
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+			summary: "Refresh user's authentication via refresh token"
 			description: "Refresh user's authentication via refresh token and receive a new pair of refresh & access tokens"
 			tags: "Users"
 		};
-	}
-	}
+  }
+  rpc Logout(LogoutRequest) returns (LogoutResponse){
+    option (google.api.http) = {
+			post: "/api/v1/logout"
+			body: "*"
+		};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+			summary: "Logout current session"
+			description: "Remove user's active session"
+			tags: "Users"
+		};
+  }
+  rpc LogoutAll(LogoutAllRequest) returns (LogoutAllResponse){
+    option (google.api.http) = {
+			post: "/api/v1/logout-all"
+			body: "*"
+		};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+			summary: "Logout all sessions"
+			description: "Remove all active session"
+			tags: "Users"
+		};
+  }
+}

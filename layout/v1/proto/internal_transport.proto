@@ -5,11 +5,38 @@ package v1.proto;
 option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
 
 
-message GetSecretKeyRequest{
-    string service_name = 1;
-    string password = 2;
+message GetSecretsRequest{
+  string service_name = 1;
+  string service_guid = 2;
+  string password = 3;
 }
 
-message GetSecretKeyResponse{
-    string secret_key = 1;
+message GetSecretsResponse{
+  repeated string secret_keys = 1;
+}
+
+message ForceLogoutAllRequest{
+  string service_name = 1;
+  string service_guid = 2;
+  string password = 3;
+}
+
+message ForceLogoutAllResponse{
+  int64 sessions_terminated = 1;
+}
+
+message ForceLogoutRequest{
+  string service_name = 1;
+  string service_guid = 2;
+  string password = 3;
+  oneof user_identity{
+    string refresh_token = 4;
+    string guid = 5;
+    string email = 6;
+    string login = 7;
+  }
+}
+
+message ForceLogoutResponse{
+
 }

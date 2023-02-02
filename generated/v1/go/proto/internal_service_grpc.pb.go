@@ -22,7 +22,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthenticationInternalServiceClient interface {
-	GetSecretKey(ctx context.Context, in *GetSecretKeyRequest, opts ...grpc.CallOption) (*GetSecretKeyResponse, error)
+	GetSecrets(ctx context.Context, in *GetSecretsRequest, opts ...grpc.CallOption) (*GetSecretsResponse, error)
+	ForceLogoutAll(ctx context.Context, in *ForceLogoutAllRequest, opts ...grpc.CallOption) (*ForceLogoutAllResponse, error)
+	ForceLogout(ctx context.Context, in *ForceLogoutRequest, opts ...grpc.CallOption) (*ForceLogoutResponse, error)
 }
 
 type authenticationInternalServiceClient struct {
@@ -33,9 +35,27 @@ func NewAuthenticationInternalServiceClient(cc grpc.ClientConnInterface) Authent
 	return &authenticationInternalServiceClient{cc}
 }
 
-func (c *authenticationInternalServiceClient) GetSecretKey(ctx context.Context, in *GetSecretKeyRequest, opts ...grpc.CallOption) (*GetSecretKeyResponse, error) {
-	out := new(GetSecretKeyResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationInternalService/GetSecretKey", in, out, opts...)
+func (c *authenticationInternalServiceClient) GetSecrets(ctx context.Context, in *GetSecretsRequest, opts ...grpc.CallOption) (*GetSecretsResponse, error) {
+	out := new(GetSecretsResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationInternalService/GetSecrets", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticationInternalServiceClient) ForceLogoutAll(ctx context.Context, in *ForceLogoutAllRequest, opts ...grpc.CallOption) (*ForceLogoutAllResponse, error) {
+	out := new(ForceLogoutAllResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationInternalService/ForceLogoutAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authenticationInternalServiceClient) ForceLogout(ctx context.Context, in *ForceLogoutRequest, opts ...grpc.CallOption) (*ForceLogoutResponse, error) {
+	out := new(ForceLogoutResponse)
+	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationInternalService/ForceLogout", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +66,9 @@ func (c *authenticationInternalServiceClient) GetSecretKey(ctx context.Context, 
 // All implementations must embed UnimplementedAuthenticationInternalServiceServer
 // for forward compatibility
 type AuthenticationInternalServiceServer interface {
-	GetSecretKey(context.Context, *GetSecretKeyRequest) (*GetSecretKeyResponse, error)
+	GetSecrets(context.Context, *GetSecretsRequest) (*GetSecretsResponse, error)
+	ForceLogoutAll(context.Context, *ForceLogoutAllRequest) (*ForceLogoutAllResponse, error)
+	ForceLogout(context.Context, *ForceLogoutRequest) (*ForceLogoutResponse, error)
 	mustEmbedUnimplementedAuthenticationInternalServiceServer()
 }
 
@@ -54,8 +76,14 @@ type AuthenticationInternalServiceServer interface {
 type UnimplementedAuthenticationInternalServiceServer struct {
 }
 
-func (UnimplementedAuthenticationInternalServiceServer) GetSecretKey(context.Context, *GetSecretKeyRequest) (*GetSecretKeyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetSecretKey not implemented")
+func (UnimplementedAuthenticationInternalServiceServer) GetSecrets(context.Context, *GetSecretsRequest) (*GetSecretsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSecrets not implemented")
+}
+func (UnimplementedAuthenticationInternalServiceServer) ForceLogoutAll(context.Context, *ForceLogoutAllRequest) (*ForceLogoutAllResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ForceLogoutAll not implemented")
+}
+func (UnimplementedAuthenticationInternalServiceServer) ForceLogout(context.Context, *ForceLogoutRequest) (*ForceLogoutResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ForceLogout not implemented")
 }
 func (UnimplementedAuthenticationInternalServiceServer) mustEmbedUnimplementedAuthenticationInternalServiceServer() {
 }
@@ -71,20 +99,56 @@ func RegisterAuthenticationInternalServiceServer(s grpc.ServiceRegistrar, srv Au
 	s.RegisterService(&AuthenticationInternalService_ServiceDesc, srv)
 }
 
-func _AuthenticationInternalService_GetSecretKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetSecretKeyRequest)
+func _AuthenticationInternalService_GetSecrets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSecretsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthenticationInternalServiceServer).GetSecretKey(ctx, in)
+		return srv.(AuthenticationInternalServiceServer).GetSecrets(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationInternalService/GetSecretKey",
+		FullMethod: "/v1.proto.AuthenticationInternalService/GetSecrets",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthenticationInternalServiceServer).GetSecretKey(ctx, req.(*GetSecretKeyRequest))
+		return srv.(AuthenticationInternalServiceServer).GetSecrets(ctx, req.(*GetSecretsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthenticationInternalService_ForceLogoutAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ForceLogoutAllRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationInternalServiceServer).ForceLogoutAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/v1.proto.AuthenticationInternalService/ForceLogoutAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationInternalServiceServer).ForceLogoutAll(ctx, req.(*ForceLogoutAllRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthenticationInternalService_ForceLogout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ForceLogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationInternalServiceServer).ForceLogout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/v1.proto.AuthenticationInternalService/ForceLogout",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationInternalServiceServer).ForceLogout(ctx, req.(*ForceLogoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -97,8 +161,16 @@ var AuthenticationInternalService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AuthenticationInternalServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetSecretKey",
-			Handler:    _AuthenticationInternalService_GetSecretKey_Handler,
+			MethodName: "GetSecrets",
+			Handler:    _AuthenticationInternalService_GetSecrets_Handler,
+		},
+		{
+			MethodName: "ForceLogoutAll",
+			Handler:    _AuthenticationInternalService_ForceLogoutAll_Handler,
+		},
+		{
+			MethodName: "ForceLogout",
+			Handler:    _AuthenticationInternalService_ForceLogout_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

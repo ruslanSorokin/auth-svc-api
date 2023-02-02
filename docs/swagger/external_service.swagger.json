@@ -19,16 +19,16 @@
     "application/json"
   ],
   "paths": {
-    "/v1/authenticate-user": {
+    "/api/v1/login": {
       "post": {
-        "summary": "Authenticate a user",
-        "description": "Authenticate a user via username \u0026 password and receive a new pair of refresh \u0026 access tokens",
-        "operationId": "AuthenticationExternalService_AuthenticateUser",
+        "summary": "Authenticate a user via credentials",
+        "description": "Authenticate a user via credentials and receive a new pair of refresh \u0026 access tokens",
+        "operationId": "AuthenticationExternalService_Login",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/protoAuthenticateUserResponse"
+              "$ref": "#/definitions/protoLoginResponse"
             }
           },
           "default": {
@@ -44,7 +44,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/protoAuthenticateUserRequest"
+              "$ref": "#/definitions/protoLoginRequest"
             }
           }
         ],
@@ -53,16 +53,16 @@
         ]
       }
     },
-    "/v1/refresh-user": {
-      "patch": {
-        "summary": "Refresh user's authentication",
-        "description": "Refresh user's authentication via refresh token and receive a new pair of refresh \u0026 access tokens",
-        "operationId": "AuthenticationExternalService_RefreshUserAuthentication",
+    "/api/v1/logout": {
+      "post": {
+        "summary": "Logout current session",
+        "description": "Remove user's active session",
+        "operationId": "AuthenticationExternalService_Logout",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/protoRefreshUserAuthenticationResponse"
+              "$ref": "#/definitions/protoLogoutResponse"
             }
           },
           "default": {
@@ -78,7 +78,75 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/protoRefreshUserAuthenticationRequest"
+              "$ref": "#/definitions/protoLogoutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/v1/logout-all": {
+      "post": {
+        "summary": "Logout all sessions",
+        "description": "Remove all active session",
+        "operationId": "AuthenticationExternalService_LogoutAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoLogoutAllResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoLogoutAllRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/v1/refresh-token-pair": {
+      "post": {
+        "summary": "Refresh user's authentication via refresh token",
+        "description": "Refresh user's authentication via refresh token and receive a new pair of refresh \u0026 access tokens",
+        "operationId": "AuthenticationExternalService_RefreshTokenPair",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoRefreshTokenPairResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoRefreshTokenPairRequest"
             }
           }
         ],
@@ -89,10 +157,13 @@
     }
   },
   "definitions": {
-    "protoAuthenticateUserRequest": {
+    "protoLoginRequest": {
       "type": "object",
       "properties": {
-        "username": {
+        "login": {
+          "type": "string"
+        },
+        "email": {
           "type": "string"
         },
         "password": {
@@ -100,7 +171,7 @@
         }
       }
     },
-    "protoAuthenticateUserResponse": {
+    "protoLoginResponse": {
       "type": "object",
       "properties": {
         "accessToken": {
@@ -111,7 +182,7 @@
         }
       }
     },
-    "protoRefreshUserAuthenticationRequest": {
+    "protoLogoutAllRequest": {
       "type": "object",
       "properties": {
         "refreshToken": {
@@ -119,7 +190,29 @@
         }
       }
     },
-    "protoRefreshUserAuthenticationResponse": {
+    "protoLogoutAllResponse": {
+      "type": "object"
+    },
+    "protoLogoutRequest": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "protoLogoutResponse": {
+      "type": "object"
+    },
+    "protoRefreshTokenPairRequest": {
+      "type": "object",
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "protoRefreshTokenPairResponse": {
       "type": "object",
       "properties": {
         "accessToken": {
