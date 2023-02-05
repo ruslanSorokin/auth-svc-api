@@ -1,6 +1,8 @@
 //go:build tools
 // +build tools
 
+//go:generate make proto.gen.go
+
 package tools
 
 import (
