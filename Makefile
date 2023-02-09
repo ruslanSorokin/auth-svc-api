@@ -16,8 +16,8 @@ install-tools: _download-tools
 proto.lint:
 	@protolint -fix -config_path=.protolint.yaml $(proto_source_path)
 
-.SILENT: proto.gen.go
-proto.gen.go: proto.lint
+.SILENT: proto.gen
+proto.gen: proto.lint
 	protoc --proto_path=$(proto_source_path) \
 	--proto_path=$(deps_path) \
 	\
