@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package v1.authentication.internal.proto;
 
-import "internal_transport.proto";
+import "auth_int_transport.proto";
 
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
@@ -19,8 +19,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 service AuthenticationInternalService{
   rpc GetSecrets(GetSecretsRequest) returns (GetSecretsResponse){
     option (google.api.http) = {
-			post: "/api/v1/get-secrets"
-			body: "*"
+			get: "/api/auth/v1/secrets"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
 			summary: "Get secret keys"
@@ -30,7 +29,7 @@ service AuthenticationInternalService{
   }
   rpc ForceLogoutAll(ForceLogoutAllRequest) returns (ForceLogoutAllResponse){
     option (google.api.http) = {
-			post: "/api/v1/force-logout-all"
+			post: "/api/auth/v1/all/force-logout"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -41,7 +40,7 @@ service AuthenticationInternalService{
   }
   rpc ForceLogout(ForceLogoutRequest) returns (ForceLogoutResponse){
     option (google.api.http) = {
-			post: "/api/v1/force-logout"
+			post: "/api/auth/v1/force-logout"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {

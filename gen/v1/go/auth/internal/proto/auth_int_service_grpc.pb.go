@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: internal_service.proto
+// source: auth_int_service.proto
 
 package proto
 
@@ -174,5 +174,5 @@ var AuthenticationInternalService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "internal_service.proto",
+	Metadata: "auth_int_service.proto",
 }

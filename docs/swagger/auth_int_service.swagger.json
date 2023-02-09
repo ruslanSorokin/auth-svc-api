@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "internal_service.proto",
+    "title": "auth_int_service.proto",
     "version": "1.0"
   },
   "tags": [
@@ -19,41 +19,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/v1/force-logout": {
-      "post": {
-        "summary": "Force logout for specific user",
-        "description": "Force logout specific user via one of the identities. It takes time equals to access token lifetime",
-        "operationId": "AuthenticationInternalService_ForceLogout",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/protoForceLogoutResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoForceLogoutRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Internal_API"
-        ]
-      }
-    },
-    "/api/v1/force-logout-all": {
+    "/api/auth/v1/all/force-logout": {
       "post": {
         "summary": "Force logout for all active",
         "description": "Force logout specific user. It takes time equals to access token lifetime",
@@ -87,8 +53,42 @@
         ]
       }
     },
-    "/api/v1/get-secrets": {
+    "/api/auth/v1/force-logout": {
       "post": {
+        "summary": "Force logout for specific user",
+        "description": "Force logout specific user via one of the identities. It takes time equals to access token lifetime",
+        "operationId": "AuthenticationInternalService_ForceLogout",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoForceLogoutResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoForceLogoutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Internal_API"
+        ]
+      }
+    },
+    "/api/auth/v1/secrets": {
+      "get": {
         "summary": "Get secret keys",
         "description": "Get secret keys via password",
         "operationId": "AuthenticationInternalService_GetSecrets",
@@ -108,12 +108,22 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoGetSecretsRequest"
-            }
+            "name": "serviceName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "serviceGuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -174,20 +184,6 @@
     },
     "protoForceLogoutResponse": {
       "type": "object"
-    },
-    "protoGetSecretsRequest": {
-      "type": "object",
-      "properties": {
-        "serviceName": {
-          "type": "string"
-        },
-        "serviceGuid": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
     },
     "protoGetSecretsResponse": {
       "type": "object",

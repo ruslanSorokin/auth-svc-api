@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v3.21.12
-// source: external_transport.proto
+// source: auth_ext_transport.proto
 
 package proto
 
@@ -36,7 +36,7 @@ type LoginRequest struct {
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[0]
+		mi := &file_auth_ext_transport_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -49,7 +49,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[0]
+	mi := &file_auth_ext_transport_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,7 +62,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{0}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{0}
 }
 
 func (m *LoginRequest) GetUserIdentity() isLoginRequest_UserIdentity {
@@ -121,7 +121,7 @@ type LoginResponse struct {
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[1]
+		mi := &file_auth_ext_transport_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -134,7 +134,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[1]
+	mi := &file_auth_ext_transport_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -147,7 +147,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{1}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *LoginResponse) GetAccessToken() string {
@@ -175,7 +175,7 @@ type RefreshTokenPairRequest struct {
 func (x *RefreshTokenPairRequest) Reset() {
 	*x = RefreshTokenPairRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[2]
+		mi := &file_auth_ext_transport_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -188,7 +188,7 @@ func (x *RefreshTokenPairRequest) String() string {
 func (*RefreshTokenPairRequest) ProtoMessage() {}
 
 func (x *RefreshTokenPairRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[2]
+	mi := &file_auth_ext_transport_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -201,7 +201,7 @@ func (x *RefreshTokenPairRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshTokenPairRequest.ProtoReflect.Descriptor instead.
 func (*RefreshTokenPairRequest) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{2}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RefreshTokenPairRequest) GetRefreshToken() string {
@@ -223,7 +223,7 @@ type RefreshTokenPairResponse struct {
 func (x *RefreshTokenPairResponse) Reset() {
 	*x = RefreshTokenPairResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[3]
+		mi := &file_auth_ext_transport_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -236,7 +236,7 @@ func (x *RefreshTokenPairResponse) String() string {
 func (*RefreshTokenPairResponse) ProtoMessage() {}
 
 func (x *RefreshTokenPairResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[3]
+	mi := &file_auth_ext_transport_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +249,7 @@ func (x *RefreshTokenPairResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshTokenPairResponse.ProtoReflect.Descriptor instead.
 func (*RefreshTokenPairResponse) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{3}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RefreshTokenPairResponse) GetAccessToken() string {
@@ -277,7 +277,7 @@ type LogoutRequest struct {
 func (x *LogoutRequest) Reset() {
 	*x = LogoutRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[4]
+		mi := &file_auth_ext_transport_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -290,7 +290,7 @@ func (x *LogoutRequest) String() string {
 func (*LogoutRequest) ProtoMessage() {}
 
 func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[4]
+	mi := &file_auth_ext_transport_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -303,7 +303,7 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{4}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LogoutRequest) GetRefreshToken() string {
@@ -322,7 +322,7 @@ type LogoutResponse struct {
 func (x *LogoutResponse) Reset() {
 	*x = LogoutResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[5]
+		mi := &file_auth_ext_transport_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -335,7 +335,7 @@ func (x *LogoutResponse) String() string {
 func (*LogoutResponse) ProtoMessage() {}
 
 func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[5]
+	mi := &file_auth_ext_transport_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -348,7 +348,7 @@ func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
 func (*LogoutResponse) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{5}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{5}
 }
 
 type LogoutAllRequest struct {
@@ -362,7 +362,7 @@ type LogoutAllRequest struct {
 func (x *LogoutAllRequest) Reset() {
 	*x = LogoutAllRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[6]
+		mi := &file_auth_ext_transport_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -375,7 +375,7 @@ func (x *LogoutAllRequest) String() string {
 func (*LogoutAllRequest) ProtoMessage() {}
 
 func (x *LogoutAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[6]
+	mi := &file_auth_ext_transport_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -388,7 +388,7 @@ func (x *LogoutAllRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutAllRequest.ProtoReflect.Descriptor instead.
 func (*LogoutAllRequest) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{6}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *LogoutAllRequest) GetRefreshToken() string {
@@ -407,7 +407,7 @@ type LogoutAllResponse struct {
 func (x *LogoutAllResponse) Reset() {
 	*x = LogoutAllResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_external_transport_proto_msgTypes[7]
+		mi := &file_auth_ext_transport_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -420,7 +420,7 @@ func (x *LogoutAllResponse) String() string {
 func (*LogoutAllResponse) ProtoMessage() {}
 
 func (x *LogoutAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_external_transport_proto_msgTypes[7]
+	mi := &file_auth_ext_transport_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -433,13 +433,13 @@ func (x *LogoutAllResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutAllResponse.ProtoReflect.Descriptor instead.
 func (*LogoutAllResponse) Descriptor() ([]byte, []int) {
-	return file_external_transport_proto_rawDescGZIP(), []int{7}
+	return file_auth_ext_transport_proto_rawDescGZIP(), []int{7}
 }
 
-var File_external_transport_proto protoreflect.FileDescriptor
+var File_auth_ext_transport_proto protoreflect.FileDescriptor
 
-var file_external_transport_proto_rawDesc = []byte{
-	0x0a, 0x18, 0x65, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5f, 0x74, 0x72, 0x61, 0x6e, 0x73,
+var file_auth_ext_transport_proto_rawDesc = []byte{
+	0x0a, 0x18, 0x61, 0x75, 0x74, 0x68, 0x5f, 0x65, 0x78, 0x74, 0x5f, 0x74, 0x72, 0x61, 0x6e, 0x73,
 	0x70, 0x6f, 0x72, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x20, 0x76, 0x31, 0x2e, 0x61,
 	0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x65, 0x78,
 	0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x6b, 0x0a, 0x0c,
@@ -484,19 +484,19 @@ var file_external_transport_proto_rawDesc = []byte{
 }
 
 var (
-	file_external_transport_proto_rawDescOnce sync.Once
-	file_external_transport_proto_rawDescData = file_external_transport_proto_rawDesc
+	file_auth_ext_transport_proto_rawDescOnce sync.Once
+	file_auth_ext_transport_proto_rawDescData = file_auth_ext_transport_proto_rawDesc
 )
 
-func file_external_transport_proto_rawDescGZIP() []byte {
-	file_external_transport_proto_rawDescOnce.Do(func() {
-		file_external_transport_proto_rawDescData = protoimpl.X.CompressGZIP(file_external_transport_proto_rawDescData)
+func file_auth_ext_transport_proto_rawDescGZIP() []byte {
+	file_auth_ext_transport_proto_rawDescOnce.Do(func() {
+		file_auth_ext_transport_proto_rawDescData = protoimpl.X.CompressGZIP(file_auth_ext_transport_proto_rawDescData)
 	})
-	return file_external_transport_proto_rawDescData
+	return file_auth_ext_transport_proto_rawDescData
 }
 
-var file_external_transport_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
-var file_external_transport_proto_goTypes = []interface{}{
+var file_auth_ext_transport_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_auth_ext_transport_proto_goTypes = []interface{}{
 	(*LoginRequest)(nil),             // 0: v1.authentication.external.proto.LoginRequest
 	(*LoginResponse)(nil),            // 1: v1.authentication.external.proto.LoginResponse
 	(*RefreshTokenPairRequest)(nil),  // 2: v1.authentication.external.proto.RefreshTokenPairRequest
@@ -506,7 +506,7 @@ var file_external_transport_proto_goTypes = []interface{}{
 	(*LogoutAllRequest)(nil),         // 6: v1.authentication.external.proto.LogoutAllRequest
 	(*LogoutAllResponse)(nil),        // 7: v1.authentication.external.proto.LogoutAllResponse
 }
-var file_external_transport_proto_depIdxs = []int32{
+var file_auth_ext_transport_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -514,13 +514,13 @@ var file_external_transport_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_external_transport_proto_init() }
-func file_external_transport_proto_init() {
-	if File_external_transport_proto != nil {
+func init() { file_auth_ext_transport_proto_init() }
+func file_auth_ext_transport_proto_init() {
+	if File_auth_ext_transport_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_external_transport_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LoginRequest); i {
 			case 0:
 				return &v.state
@@ -532,7 +532,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LoginResponse); i {
 			case 0:
 				return &v.state
@@ -544,7 +544,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RefreshTokenPairRequest); i {
 			case 0:
 				return &v.state
@@ -556,7 +556,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RefreshTokenPairResponse); i {
 			case 0:
 				return &v.state
@@ -568,7 +568,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LogoutRequest); i {
 			case 0:
 				return &v.state
@@ -580,7 +580,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LogoutResponse); i {
 			case 0:
 				return &v.state
@@ -592,7 +592,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LogoutAllRequest); i {
 			case 0:
 				return &v.state
@@ -604,7 +604,7 @@ func file_external_transport_proto_init() {
 				return nil
 			}
 		}
-		file_external_transport_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_auth_ext_transport_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LogoutAllResponse); i {
 			case 0:
 				return &v.state
@@ -617,7 +617,7 @@ func file_external_transport_proto_init() {
 			}
 		}
 	}
-	file_external_transport_proto_msgTypes[0].OneofWrappers = []interface{}{
+	file_auth_ext_transport_proto_msgTypes[0].OneofWrappers = []interface{}{
 		(*LoginRequest_Login)(nil),
 		(*LoginRequest_Email)(nil),
 	}
@@ -625,18 +625,18 @@ func file_external_transport_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_external_transport_proto_rawDesc,
+			RawDescriptor: file_auth_ext_transport_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_external_transport_proto_goTypes,
-		DependencyIndexes: file_external_transport_proto_depIdxs,
-		MessageInfos:      file_external_transport_proto_msgTypes,
+		GoTypes:           file_auth_ext_transport_proto_goTypes,
+		DependencyIndexes: file_auth_ext_transport_proto_depIdxs,
+		MessageInfos:      file_auth_ext_transport_proto_msgTypes,
 	}.Build()
-	File_external_transport_proto = out.File
-	file_external_transport_proto_rawDesc = nil
-	file_external_transport_proto_goTypes = nil
-	file_external_transport_proto_depIdxs = nil
+	File_auth_ext_transport_proto = out.File
+	file_auth_ext_transport_proto_rawDesc = nil
+	file_auth_ext_transport_proto_goTypes = nil
+	file_auth_ext_transport_proto_depIdxs = nil
 }

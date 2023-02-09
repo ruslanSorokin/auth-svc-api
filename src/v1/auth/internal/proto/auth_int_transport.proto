@@ -38,5 +38,4 @@ message ForceLogoutRequest{
 }
 
 message ForceLogoutResponse{
-
 }

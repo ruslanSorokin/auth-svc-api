@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package v1.authentication.external.proto;
 
-import "external_transport.proto";
+import "auth_ext_transport.proto";
 
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
@@ -19,7 +19,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 service AuthenticationExternalService{
   rpc Login(LoginRequest) returns (LoginResponse){
     option (google.api.http) = {
-			post: "/api/v1/login"
+			post: "/api/auth/v1/user/login"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -30,7 +30,7 @@ service AuthenticationExternalService{
   }
   rpc RefreshTokenPair(RefreshTokenPairRequest) returns (RefreshTokenPairResponse){
     option (google.api.http) = {
-			post: "/api/v1/refresh-token-pair"
+			post: "/api/auth/v1/user/refresh-token-pair"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -41,7 +41,7 @@ service AuthenticationExternalService{
   }
   rpc Logout(LogoutRequest) returns (LogoutResponse){
     option (google.api.http) = {
-			post: "/api/v1/logout"
+			post: "/api/auth/v1/user/logout"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -52,7 +52,7 @@ service AuthenticationExternalService{
   }
   rpc LogoutAll(LogoutAllRequest) returns (LogoutAllResponse){
     option (google.api.http) = {
-			post: "/api/v1/logout-all"
+			post: "/api/auth/v1/all/logout"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "external_service.proto",
+    "title": "auth_ext_service.proto",
     "version": "1.0"
   },
   "tags": [
@@ -19,75 +19,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/v1/login": {
-      "post": {
-        "summary": "Authenticate a user via credentials",
-        "description": "Authenticate a user via credentials and receive a new pair of refresh \u0026 access tokens",
-        "operationId": "AuthenticationExternalService_Login",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/protoLoginResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoLoginRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/api/v1/logout": {
-      "post": {
-        "summary": "Logout current session",
-        "description": "Remove user's active session",
-        "operationId": "AuthenticationExternalService_Logout",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/protoLogoutResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoLogoutRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/api/v1/logout-all": {
+    "/api/auth/v1/all/logout": {
       "post": {
         "summary": "Logout all sessions",
         "description": "Remove all active session",
@@ -121,7 +53,75 @@
         ]
       }
     },
-    "/api/v1/refresh-token-pair": {
+    "/api/auth/v1/user/login": {
+      "post": {
+        "summary": "Authenticate a user via credentials",
+        "description": "Authenticate a user via credentials and receive a new pair of refresh \u0026 access tokens",
+        "operationId": "AuthenticationExternalService_Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoLoginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/auth/v1/user/logout": {
+      "post": {
+        "summary": "Logout current session",
+        "description": "Remove user's active session",
+        "operationId": "AuthenticationExternalService_Logout",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoLogoutResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoLogoutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/auth/v1/user/refresh-token-pair": {
       "post": {
         "summary": "Refresh user's authentication via refresh token",
         "description": "Refresh user's authentication via refresh token and receive a new pair of refresh \u0026 access tokens",

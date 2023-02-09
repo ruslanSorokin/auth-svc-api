@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "external_transport.proto",
+    "title": "auth_int_transport.proto",
     "version": "version not set"
   },
   "consumes": [

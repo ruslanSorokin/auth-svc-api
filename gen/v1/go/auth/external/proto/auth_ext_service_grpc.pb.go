@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: external_service.proto
+// source: auth_ext_service.proto
 
 package proto
 
@@ -210,5 +210,5 @@ var AuthenticationExternalService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "external_service.proto",
+	Metadata: "auth_ext_service.proto",
 }
