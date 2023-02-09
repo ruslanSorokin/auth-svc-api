@@ -16,10 +16,10 @@
     "application/json"
   ],
   "paths": {
-    "/api/auth/v1/users/sign-up": {
+    "/api/auth/v1/accounts/sign-up": {
       "post": {
-        "summary": "Register a new user",
-        "description": "Register a new user via credentials and receive a new pair of refresh \u0026 access tokens",
+        "summary": "Register a new account",
+        "description": "Register a new account via credentials and receive a new pair of refresh \u0026 access tokens",
         "operationId": "AuthenticationExternalService_SignUp",
         "responses": {
           "200": {
@@ -46,7 +46,7 @@
           }
         ],
         "tags": [
-          "Users"
+          "Accounts"
         ]
       }
     }

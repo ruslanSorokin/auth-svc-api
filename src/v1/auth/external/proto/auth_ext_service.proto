@@ -19,46 +19,46 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 service AuthenticationExternalService{
   rpc Login(LoginRequest) returns (LoginResponse){
     option (google.api.http) = {
-			post: "/api/auth/v1/user/login"
+			post: "/api/auth/v1/account/login"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Authenticate a user via credentials"
-			description: "Authenticate a user via credentials and receive a new pair of refresh & access tokens"
-			tags: "Users"
+			summary: "Authenticate an account via its credentials"
+			description: "Authenticate an account via its credentials and receive a new pair of refresh & access tokens"
+			tags: "Accounts"
 		};
   }
   rpc RefreshTokenPair(RefreshTokenPairRequest) returns (RefreshTokenPairResponse){
     option (google.api.http) = {
-			post: "/api/auth/v1/user/refresh-token-pair"
+			post: "/api/auth/v1/account/refresh-token-pair"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Refresh user's authentication via refresh token"
-			description: "Refresh user's authentication via refresh token and receive a new pair of refresh & access tokens"
-			tags: "Users"
+			summary: "Refresh an account's authentication via refresh token"
+			description: "Refresh an account's authentication via refresh token and receive a new pair of refresh & access tokens"
+			tags: "Accounts"
 		};
   }
   rpc Logout(LogoutRequest) returns (LogoutResponse){
     option (google.api.http) = {
-			post: "/api/auth/v1/user/logout"
+			post: "/api/auth/v1/account/logout"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
 			summary: "Logout current session"
-			description: "Remove user's active session"
-			tags: "Users"
+			description: "Remove an account's active session"
+			tags: "Accounts"
 		};
   }
   rpc LogoutAll(LogoutAllRequest) returns (LogoutAllResponse){
     option (google.api.http) = {
-			post: "/api/auth/v1/all/logout"
+			post: "/api/auth/v1/account/logout-all"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Logout all sessions"
-			description: "Remove all active session"
-			tags: "Users"
+			summary: "Logout all sessions for the current account"
+			description: "Logout all active session for the current account"
+			tags: "Accounts"
 		};
   }
 }

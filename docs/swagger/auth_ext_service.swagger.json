@@ -19,44 +19,10 @@
     "application/json"
   ],
   "paths": {
-    "/api/auth/v1/all/logout": {
+    "/api/auth/v1/account/login": {
       "post": {
-        "summary": "Logout all sessions",
-        "description": "Remove all active session",
-        "operationId": "AuthenticationExternalService_LogoutAll",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/protoLogoutAllResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoLogoutAllRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/api/auth/v1/user/login": {
-      "post": {
-        "summary": "Authenticate a user via credentials",
-        "description": "Authenticate a user via credentials and receive a new pair of refresh \u0026 access tokens",
+        "summary": "Authenticate an account via its credentials",
+        "description": "Authenticate an account via its credentials and receive a new pair of refresh \u0026 access tokens",
         "operationId": "AuthenticationExternalService_Login",
         "responses": {
           "200": {
@@ -83,14 +49,14 @@
           }
         ],
         "tags": [
-          "Users"
+          "Accounts"
         ]
       }
     },
-    "/api/auth/v1/user/logout": {
+    "/api/auth/v1/account/logout": {
       "post": {
         "summary": "Logout current session",
-        "description": "Remove user's active session",
+        "description": "Remove an account's active session",
         "operationId": "AuthenticationExternalService_Logout",
         "responses": {
           "200": {
@@ -117,14 +83,48 @@
           }
         ],
         "tags": [
-          "Users"
+          "Accounts"
         ]
       }
     },
-    "/api/auth/v1/user/refresh-token-pair": {
+    "/api/auth/v1/account/logout-all": {
       "post": {
-        "summary": "Refresh user's authentication via refresh token",
-        "description": "Refresh user's authentication via refresh token and receive a new pair of refresh \u0026 access tokens",
+        "summary": "Logout all sessions for the current account",
+        "description": "Logout all active session for the current account",
+        "operationId": "AuthenticationExternalService_LogoutAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoLogoutAllResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoLogoutAllRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/api/auth/v1/account/refresh-token-pair": {
+      "post": {
+        "summary": "Refresh an account's authentication via refresh token",
+        "description": "Refresh an account's authentication via refresh token and receive a new pair of refresh \u0026 access tokens",
         "operationId": "AuthenticationExternalService_RefreshTokenPair",
         "responses": {
           "200": {
@@ -151,7 +151,7 @@
           }
         ],
         "tags": [
-          "Users"
+          "Accounts"
         ]
       }
     }

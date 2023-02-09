@@ -19,44 +19,10 @@
     "application/json"
   ],
   "paths": {
-    "/api/auth/v1/all/force-logout": {
+    "/api/auth/internal/v1/force-logout": {
       "post": {
-        "summary": "Force logout for all active",
-        "description": "Force logout specific user. It takes time equals to access token lifetime",
-        "operationId": "AuthenticationInternalService_ForceLogoutAll",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/protoForceLogoutAllResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoForceLogoutAllRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Internal_API"
-        ]
-      }
-    },
-    "/api/auth/v1/force-logout": {
-      "post": {
-        "summary": "Force logout for specific user",
-        "description": "Force logout specific user via one of the identities. It takes time equals to access token lifetime",
+        "summary": "Force logout for specific account",
+        "description": "Force logout specific account via one of the identities. It takes time equals to access token lifetime",
         "operationId": "AuthenticationInternalService_ForceLogout",
         "responses": {
           "200": {
@@ -87,7 +53,41 @@
         ]
       }
     },
-    "/api/auth/v1/secrets": {
+    "/api/auth/internal/v1/force-logout-all": {
+      "post": {
+        "summary": "Force logout all accounts",
+        "description": "Force logout all active account",
+        "operationId": "AuthenticationInternalService_ForceLogoutAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoForceLogoutAllResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoForceLogoutAllRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Internal_API"
+        ]
+      }
+    },
+    "/api/auth/internal/v1/secrets": {
       "get": {
         "summary": "Get secret keys",
         "description": "Get secret keys via password",

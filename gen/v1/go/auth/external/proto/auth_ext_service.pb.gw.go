@@ -181,7 +181,7 @@ func RegisterAuthenticationExternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Login", runtime.WithHTTPPathPattern("/api/auth/v1/user/login"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Login", runtime.WithHTTPPathPattern("/api/auth/v1/account/login"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -206,7 +206,7 @@ func RegisterAuthenticationExternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/RefreshTokenPair", runtime.WithHTTPPathPattern("/api/auth/v1/user/refresh-token-pair"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/RefreshTokenPair", runtime.WithHTTPPathPattern("/api/auth/v1/account/refresh-token-pair"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -231,7 +231,7 @@ func RegisterAuthenticationExternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Logout", runtime.WithHTTPPathPattern("/api/auth/v1/user/logout"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Logout", runtime.WithHTTPPathPattern("/api/auth/v1/account/logout"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -256,7 +256,7 @@ func RegisterAuthenticationExternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/LogoutAll", runtime.WithHTTPPathPattern("/api/auth/v1/all/logout"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/LogoutAll", runtime.WithHTTPPathPattern("/api/auth/v1/account/logout-all"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -320,7 +320,7 @@ func RegisterAuthenticationExternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Login", runtime.WithHTTPPathPattern("/api/auth/v1/user/login"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Login", runtime.WithHTTPPathPattern("/api/auth/v1/account/login"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -342,7 +342,7 @@ func RegisterAuthenticationExternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/RefreshTokenPair", runtime.WithHTTPPathPattern("/api/auth/v1/user/refresh-token-pair"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/RefreshTokenPair", runtime.WithHTTPPathPattern("/api/auth/v1/account/refresh-token-pair"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -364,7 +364,7 @@ func RegisterAuthenticationExternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Logout", runtime.WithHTTPPathPattern("/api/auth/v1/user/logout"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/Logout", runtime.WithHTTPPathPattern("/api/auth/v1/account/logout"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -386,7 +386,7 @@ func RegisterAuthenticationExternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/LogoutAll", runtime.WithHTTPPathPattern("/api/auth/v1/all/logout"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.external.proto.AuthenticationExternalService/LogoutAll", runtime.WithHTTPPathPattern("/api/auth/v1/account/logout-all"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -406,13 +406,13 @@ func RegisterAuthenticationExternalServiceHandlerClient(ctx context.Context, mux
 }
 
 var (
-	pattern_AuthenticationExternalService_Login_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "user", "login"}, ""))
+	pattern_AuthenticationExternalService_Login_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "account", "login"}, ""))
 
-	pattern_AuthenticationExternalService_RefreshTokenPair_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "user", "refresh-token-pair"}, ""))
+	pattern_AuthenticationExternalService_RefreshTokenPair_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "account", "refresh-token-pair"}, ""))
 
-	pattern_AuthenticationExternalService_Logout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "user", "logout"}, ""))
+	pattern_AuthenticationExternalService_Logout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "account", "logout"}, ""))
 
-	pattern_AuthenticationExternalService_LogoutAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "all", "logout"}, ""))
+	pattern_AuthenticationExternalService_LogoutAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "account", "logout-all"}, ""))
 )
 
 var (

@@ -149,7 +149,7 @@ func RegisterAuthenticationInternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/auth/v1/secrets"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/auth/internal/v1/secrets"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -174,7 +174,7 @@ func RegisterAuthenticationInternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/auth/v1/all/force-logout"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/auth/internal/v1/force-logout-all"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -199,7 +199,7 @@ func RegisterAuthenticationInternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/auth/v1/force-logout"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/auth/internal/v1/force-logout"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -263,7 +263,7 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/auth/v1/secrets"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/auth/internal/v1/secrets"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -285,7 +285,7 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/auth/v1/all/force-logout"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/auth/internal/v1/force-logout-all"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -307,7 +307,7 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/auth/v1/force-logout"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/auth/internal/v1/force-logout"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -327,11 +327,11 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 }
 
 var (
-	pattern_AuthenticationInternalService_GetSecrets_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "auth", "v1", "secrets"}, ""))
+	pattern_AuthenticationInternalService_GetSecrets_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "internal", "v1", "secrets"}, ""))
 
-	pattern_AuthenticationInternalService_ForceLogoutAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "v1", "all", "force-logout"}, ""))
+	pattern_AuthenticationInternalService_ForceLogoutAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "internal", "v1", "force-logout-all"}, ""))
 
-	pattern_AuthenticationInternalService_ForceLogout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "auth", "v1", "force-logout"}, ""))
+	pattern_AuthenticationInternalService_ForceLogout_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"api", "auth", "internal", "v1", "force-logout"}, ""))
 )
 
 var (

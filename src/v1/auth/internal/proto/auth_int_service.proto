@@ -19,7 +19,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 service AuthenticationInternalService{
   rpc GetSecrets(GetSecretsRequest) returns (GetSecretsResponse){
     option (google.api.http) = {
-			get: "/api/auth/v1/secrets"
+			get: "/api/auth/internal/v1/secrets"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
 			summary: "Get secret keys"
@@ -29,23 +29,23 @@ service AuthenticationInternalService{
   }
   rpc ForceLogoutAll(ForceLogoutAllRequest) returns (ForceLogoutAllResponse){
     option (google.api.http) = {
-			post: "/api/auth/v1/all/force-logout"
+			post: "/api/auth/internal/v1/force-logout-all"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Force logout for all active"
-			description: "Force logout specific user. It takes time equals to access token lifetime"
+			summary: "Force logout all accounts"
+			description: "Force logout all active account"
 			tags: "Internal_API"
 		};
   }
   rpc ForceLogout(ForceLogoutRequest) returns (ForceLogoutResponse){
     option (google.api.http) = {
-			post: "/api/auth/v1/force-logout"
+			post: "/api/auth/internal/v1/force-logout"
 			body: "*"
 		};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			summary: "Force logout for specific user"
-			description: "Force logout specific user via one of the identities. It takes time equals to access token lifetime"
+			summary: "Force logout for specific account"
+			description: "Force logout specific account via one of the identities. It takes time equals to access token lifetime"
 			tags: "Internal_API"
 		};
   }

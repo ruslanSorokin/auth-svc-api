@@ -12,13 +12,13 @@ option go_package = "github.com/ruslanSorokin/authentication-service-api/gen/v1/
 service AuthenticationExternalService{
   rpc SignUp(SignUpRequest) returns (SignUpResponse){
     option (google.api.http) = {
-			  post: "/api/auth/v1/users/sign-up"
+			  post: "/api/auth/v1/accounts/sign-up"
 			  body: "*"
 		  };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-			  summary: "Register a new user"
-			  description: "Register a new user via credentials and receive a new pair of refresh & access tokens"
-			  tags: "Users"
+			  summary: "Register a new account"
+			  description: "Register a new account via credentials and receive a new pair of refresh & access tokens"
+			  tags: "Accounts"
 		  };
   }
 }
