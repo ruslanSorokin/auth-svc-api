@@ -1,8 +1,8 @@
 syntax = "proto3";
-package v1.proto;
 
+package v1.authentication.internal.proto;
 
-option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
+option go_package = "github.com/ruslanSorokin/authentication-service-api/gen/v1/go/auth/internal/proto";
 
 
 message GetSecretsRequest{

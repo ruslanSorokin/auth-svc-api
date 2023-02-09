@@ -38,7 +38,7 @@ func NewAuthenticationExternalServiceClient(cc grpc.ClientConnInterface) Authent
 
 func (c *authenticationExternalServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/Login", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/v1.authentication.external.proto.AuthenticationExternalService/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *authenticationExternalServiceClient) Login(ctx context.Context, in *Log
 
 func (c *authenticationExternalServiceClient) RefreshTokenPair(ctx context.Context, in *RefreshTokenPairRequest, opts ...grpc.CallOption) (*RefreshTokenPairResponse, error) {
 	out := new(RefreshTokenPairResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/RefreshTokenPair", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/v1.authentication.external.proto.AuthenticationExternalService/RefreshTokenPair", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *authenticationExternalServiceClient) RefreshTokenPair(ctx context.Conte
 
 func (c *authenticationExternalServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
 	out := new(LogoutResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/Logout", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/v1.authentication.external.proto.AuthenticationExternalService/Logout", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c *authenticationExternalServiceClient) Logout(ctx context.Context, in *Lo
 
 func (c *authenticationExternalServiceClient) LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error) {
 	out := new(LogoutAllResponse)
-	err := c.cc.Invoke(ctx, "/v1.proto.AuthenticationExternalService/LogoutAll", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/v1.authentication.external.proto.AuthenticationExternalService/LogoutAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -123,7 +123,7 @@ func _AuthenticationExternalService_Login_Handler(srv interface{}, ctx context.C
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationExternalService/Login",
+		FullMethod: "/v1.authentication.external.proto.AuthenticationExternalService/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationExternalServiceServer).Login(ctx, req.(*LoginRequest))
@@ -141,7 +141,7 @@ func _AuthenticationExternalService_RefreshTokenPair_Handler(srv interface{}, ct
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationExternalService/RefreshTokenPair",
+		FullMethod: "/v1.authentication.external.proto.AuthenticationExternalService/RefreshTokenPair",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationExternalServiceServer).RefreshTokenPair(ctx, req.(*RefreshTokenPairRequest))
@@ -159,7 +159,7 @@ func _AuthenticationExternalService_Logout_Handler(srv interface{}, ctx context.
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationExternalService/Logout",
+		FullMethod: "/v1.authentication.external.proto.AuthenticationExternalService/Logout",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationExternalServiceServer).Logout(ctx, req.(*LogoutRequest))
@@ -177,7 +177,7 @@ func _AuthenticationExternalService_LogoutAll_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/v1.proto.AuthenticationExternalService/LogoutAll",
+		FullMethod: "/v1.authentication.external.proto.AuthenticationExternalService/LogoutAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthenticationExternalServiceServer).LogoutAll(ctx, req.(*LogoutAllRequest))
@@ -189,7 +189,7 @@ func _AuthenticationExternalService_LogoutAll_Handler(srv interface{}, ctx conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuthenticationExternalService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "v1.proto.AuthenticationExternalService",
+	ServiceName: "v1.authentication.external.proto.AuthenticationExternalService",
 	HandlerType: (*AuthenticationExternalServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

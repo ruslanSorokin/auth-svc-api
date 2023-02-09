@@ -147,7 +147,7 @@ func RegisterAuthenticationInternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/v1/get-secrets"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/v1/get-secrets"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -172,7 +172,7 @@ func RegisterAuthenticationInternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/v1/force-logout-all"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/v1/force-logout-all"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -197,7 +197,7 @@ func RegisterAuthenticationInternalServiceHandlerServer(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/v1/force-logout"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/v1/force-logout"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -261,7 +261,7 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/v1/get-secrets"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/GetSecrets", runtime.WithHTTPPathPattern("/api/v1/get-secrets"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -283,7 +283,7 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/v1/force-logout-all"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogoutAll", runtime.WithHTTPPathPattern("/api/v1/force-logout-all"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -305,7 +305,7 @@ func RegisterAuthenticationInternalServiceHandlerClient(ctx context.Context, mux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/v1/force-logout"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/v1.authentication.internal.proto.AuthenticationInternalService/ForceLogout", runtime.WithHTTPPathPattern("/api/v1/force-logout"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package v1.proto;
+package v1.authentication.external.proto;
 
 import "external_transport.proto";
 
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-option go_package = "github.com/ruslanSorokin/auth-service-api/generated/v1/go/proto";
+option go_package = "github.com/ruslanSorokin/authentication-service-api/gen/v1/go/auth/external/proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	info :{
