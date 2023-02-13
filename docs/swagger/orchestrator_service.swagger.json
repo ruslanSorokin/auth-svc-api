@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "auth_int_service.proto",
+    "title": "orchestrator_service.proto",
     "version": "1.0"
   },
   "tags": [
     {
-      "name": "AuthenticationInternalService"
+      "name": "OrchestratorService"
     }
   ],
   "schemes": [
@@ -23,7 +23,7 @@
       "post": {
         "summary": "Force logout for specific account",
         "description": "Force logout specific account via one of the identities. It takes time equals to access token lifetime",
-        "operationId": "AuthenticationInternalService_ForceLogout",
+        "operationId": "OrchestratorService_ForceLogout",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -57,7 +57,7 @@
       "post": {
         "summary": "Force logout all accounts",
         "description": "Force logout all active account",
-        "operationId": "AuthenticationInternalService_ForceLogoutAll",
+        "operationId": "OrchestratorService_ForceLogoutAll",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -91,7 +91,7 @@
       "get": {
         "summary": "Get secret keys",
         "description": "Get secret keys via password",
-        "operationId": "AuthenticationInternalService_GetSecrets",
+        "operationId": "OrchestratorService_GetSecrets",
         "responses": {
           "200": {
             "description": "A successful response.",

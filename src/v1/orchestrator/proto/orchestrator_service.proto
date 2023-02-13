@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package v1.authentication.internal.proto;
+package v1.orchestrator.proto;
 
-import "auth_int_transport.proto";
+import "orchestrator_transport.proto";
 
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/auth/internal/proto";
+option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/orchestrator/proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	info :{
@@ -16,7 +16,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	schemes: HTTPS;
 };
 
-service AuthenticationInternalService{
+service OrchestratorService{
   rpc GetSecrets(GetSecretsRequest) returns (GetSecretsResponse){
     option (google.api.http) = {
 			get: "/api/auth/internal/v1/secrets"

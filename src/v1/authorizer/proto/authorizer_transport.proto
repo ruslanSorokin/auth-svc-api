@@ -1,10 +1,19 @@
 syntax = "proto3";
 
-package v1.authentication.external.proto;
+package v1.authorizer.proto;
 
 
-option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/auth/external/proto";
+option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/authorizer/proto";
 
+
+message SignUpRequest{
+  string email = 1;
+  string login = 2;
+  string password = 3;
+}
+  
+message SignUpResponse{
+}
 
 message LoginRequest{
   oneof user_identity {

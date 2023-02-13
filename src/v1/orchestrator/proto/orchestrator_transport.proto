@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package v1.authentication.internal.proto;
+package v1.orchestrator.proto;
 
-option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/auth/internal/proto";
+option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/orchestrator/proto";
 
 
 message GetSecretsRequest{

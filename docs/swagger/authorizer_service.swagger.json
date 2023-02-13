@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "auth_ext_service.proto",
+    "title": "authorizer_service.proto",
     "version": "1.0"
   },
   "tags": [
     {
-      "name": "AuthenticationExternalService"
+      "name": "AuthorizerService"
     }
   ],
   "schemes": [
@@ -23,7 +23,7 @@
       "post": {
         "summary": "Authenticate an account via its credentials",
         "description": "Authenticate an account via its credentials and receive a new pair of refresh \u0026 access tokens",
-        "operationId": "AuthenticationExternalService_Login",
+        "operationId": "AuthorizerService_Login",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -57,7 +57,7 @@
       "post": {
         "summary": "Logout current session",
         "description": "Remove an account's active session",
-        "operationId": "AuthenticationExternalService_Logout",
+        "operationId": "AuthorizerService_Logout",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -91,7 +91,7 @@
       "post": {
         "summary": "Logout all sessions for the current account",
         "description": "Logout all active session for the current account",
-        "operationId": "AuthenticationExternalService_LogoutAll",
+        "operationId": "AuthorizerService_LogoutAll",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -125,7 +125,7 @@
       "post": {
         "summary": "Refresh an account's authentication via refresh token",
         "description": "Refresh an account's authentication via refresh token and receive a new pair of refresh \u0026 access tokens",
-        "operationId": "AuthenticationExternalService_RefreshTokenPair",
+        "operationId": "AuthorizerService_RefreshTokenPair",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -147,6 +147,40 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/protoRefreshTokenPairRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ]
+      }
+    },
+    "/api/auth/v1/accounts/sign-up": {
+      "post": {
+        "summary": "Register a new account",
+        "description": "Register a new account via credentials and receive a new pair of refresh \u0026 access tokens",
+        "operationId": "AuthorizerService_SignUp",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoSignUpResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoSignUpRequest"
             }
           }
         ],
@@ -222,6 +256,23 @@
           "type": "string"
         }
       }
+    },
+    "protoSignUpRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "protoSignUpResponse": {
+      "type": "object"
     },
     "protobufAny": {
       "type": "object",

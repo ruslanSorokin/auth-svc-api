@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "auth_ext_transport.proto",
+    "title": "orchestrator_transport.proto",
     "version": "version not set"
   },
   "consumes": [
