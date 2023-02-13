@@ -7,7 +7,7 @@ import "auth_int_transport.proto";
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-option go_package = "github.com/ruslanSorokin/authentication-service-api/gen/v1/go/auth/internal/proto";
+option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/auth/internal/proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	info :{

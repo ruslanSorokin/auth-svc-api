@@ -3,7 +3,7 @@ syntax = "proto3";
 package v1.authentication.external.proto;
 
 
-option go_package = "github.com/ruslanSorokin/authentication-service-api/gen/v1/go/auth/external/proto";
+option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/auth/external/proto";
 
 
 message LoginRequest{

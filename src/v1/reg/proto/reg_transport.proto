@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package v1.registration.proto;
 
-option go_package = "github.com/ruslanSorokin/authentication-service-api/gen/v1/go/reg/proto";
+option go_package = "github.com/ruslanSorokin/auth-svc-api/gen/v1/go/reg/proto";
 
 message SignUpRequest{
   string email = 1;
